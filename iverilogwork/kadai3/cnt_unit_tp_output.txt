@@ -1,0 +1,17 @@
+         0 ck=0 res=0 en=0 q=x ca=0
+     50000 ck=1 res=0 en=0 q=x ca=0
+    100000 ck=0 res=1 en=0 q=0 ca=0
+    150000 ck=1 res=1 en=0 q=0 ca=0
+    200000 ck=0 res=0 en=0 q=0 ca=0
+    250000 ck=1 res=0 en=0 q=0 ca=0
+    300000 ck=0 res=0 en=0 q=0 ca=0
+    350000 ck=1 res=0 en=0 q=0 ca=0
+    400000 ck=0 res=0 en=1 q=0 ca=0
+    450000 ck=1 res=0 en=1 q=1 ca=1
+    500000 ck=0 res=0 en=1 q=1 ca=1
+    550000 ck=1 res=0 en=1 q=0 ca=0
+    600000 ck=0 res=0 en=1 q=0 ca=0
+    650000 ck=1 res=0 en=1 q=1 ca=1
+    700000 ck=0 res=1 en=1 q=0 ca=0
+    750000 ck=1 res=1 en=1 q=0 ca=0
+    800000 ck=0 res=1 en=1 q=0 ca=0

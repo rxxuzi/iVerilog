@@ -1,0 +1,31 @@
+
+c:\iverilogwork>iverilog -o sum4_tp.o sum4.v sum4_tp.v
+
+c:\iverilogwork>vvp sum4_tp.o
+         0 a=0 b=0 carry=0 sum=0
+       100 a=1 b=1 carry=0 sum=2
+       200 a=f b=1 carry=1 sum=0
+       300 a=f b=f carry=1 sum=e
+
+
+c:\iverilogwork>iverilog -o enc4to2_tp.o enc4to2.v enc4to2_tp.v
+
+c:\iverilogwork>vvp enc4to2_tp.o
+         0 din=0001 dout=00
+       100 din=0010 dout=01
+       200 din=0100 dout=10
+       300 din=1000 dout=11
+       400 din=1111 dout=11
+
+c:\iverilogwork>iverilog -o DFF_tp.o DFF.v DFF_tp.v
+
+c:\iverilogwork>vvp DFF_tp.o
+         0 CK=0 D=0 Q=x
+        50 CK=1 D=0 Q=0
+       100 CK=0 D=1 Q=0
+       150 CK=1 D=1 Q=1
+       200 CK=0 D=0 Q=1
+       250 CK=1 D=0 Q=0
+       300 CK=0 D=0 Q=0
+
+c:\iverilogwork>

@@ -1,0 +1,39 @@
+$date
+	Wed Apr 14 10:02:26 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module gand_tp $end
+$var wire 1 ! c $end
+$var reg 1 " a $end
+$var reg 1 # b $end
+$scope module gand $end
+$var wire 1 " a $end
+$var wire 1 # b $end
+$var wire 1 ! c $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0#
+0"
+0!
+$end
+#100
+1#
+#200
+0#
+1"
+#300
+1!
+1#
+#400
+0!
+0#
+0"
+#500

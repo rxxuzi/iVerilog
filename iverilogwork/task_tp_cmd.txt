@@ -1,0 +1,12 @@
+c:\iverilogwork>iverilog -o task_tp.o task_tp.v gand.v
+
+c:\iverilogwork>vvp task_tp.o
+         0 A=x B=x C=x
+       100 A=0 B=x C=0
+       200 A=0 B=0 C=0
+     10400 A=0 B=1 C=0
+     20500 A=1 B=1 C=1
+     20600 A=1 B=0 C=0
+     30800 A=1 B=1 C=1
+
+c:\iverilogwork>

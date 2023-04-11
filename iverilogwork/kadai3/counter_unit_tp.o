@@ -1,0 +1,199 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000000000b59ca0 .scope module, "counter_unit_tp" "counter_unit_tp" 2 2;
+ .timescale -12 -12;
+P_0000000000b58460 .param/l "STEP" 0 2 5, +C4<00000000000000011000011010100000>;
+v0000000000bb7850_0 .var "ck", 0 0;
+v0000000000bb68b0_0 .net "q", 3 0, L_0000000000bb6d10;  1 drivers
+v0000000000bb8570_0 .var "res", 0 0;
+S_0000000000b5b210 .scope module, "counter_unit" "counter_unit" 2 7, 3 2 0, S_0000000000b59ca0;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "ck";
+    .port_info 1 /INPUT 1 "res";
+    .port_info 2 /OUTPUT 4 "q";
+v0000000000b5c140_0 .net "ca", 3 0, L_0000000000bb7e90;  1 drivers
+v0000000000b5b4c0_0 .net "ck", 0 0, v0000000000bb7850_0;  1 drivers
+v0000000000bb7fd0_0 .net "q", 3 0, L_0000000000bb6d10;  alias, 1 drivers
+v0000000000bb7490_0 .net "res", 0 0, v0000000000bb8570_0;  1 drivers
+L_0000000000bb8390 .part L_0000000000bb7e90, 0, 1;
+L_0000000000bb8070 .part L_0000000000bb7e90, 1, 1;
+L_0000000000bb7170 .part L_0000000000bb7e90, 2, 1;
+L_0000000000bb6d10 .concat8 [ 1 1 1 1], v0000000000b5b600_0, v0000000000b5c280_0, v0000000000b5bd80_0, v0000000000b5c0a0_0;
+L_0000000000bb7e90 .concat8 [ 1 1 1 1], L_0000000000b5aeb0, L_0000000000b5ac80, L_0000000000b5b150, L_0000000000b5aac0;
+S_0000000000b5f730 .scope module, "cu0" "cnt_unit" 3 7, 4 2 0, S_0000000000b5b210;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "CK";
+    .port_info 1 /INPUT 1 "RES";
+    .port_info 2 /INPUT 1 "EN";
+    .port_info 3 /OUTPUT 1 "Q";
+    .port_info 4 /OUTPUT 1 "CA";
+L_0000000000bb8878 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+L_0000000000b5aeb0 .functor AND 1, L_0000000000bb8878, v0000000000b5b600_0, C4<1>, C4<1>;
+v0000000000b5bc40_0 .net "CA", 0 0, L_0000000000b5aeb0;  1 drivers
+v0000000000b5bec0_0 .net "CK", 0 0, v0000000000bb7850_0;  alias, 1 drivers
+v0000000000b5b7e0_0 .net "EN", 0 0, L_0000000000bb8878;  1 drivers
+v0000000000b5b600_0 .var "Q", 0 0;
+v0000000000b5bce0_0 .net "RES", 0 0, v0000000000bb8570_0;  alias, 1 drivers
+E_0000000000b58260 .event posedge, v0000000000b5bce0_0, v0000000000b5bec0_0;
+S_0000000000b66fd0 .scope module, "cu1" "cnt_unit" 3 8, 4 2 0, S_0000000000b5b210;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "CK";
+    .port_info 1 /INPUT 1 "RES";
+    .port_info 2 /INPUT 1 "EN";
+    .port_info 3 /OUTPUT 1 "Q";
+    .port_info 4 /OUTPUT 1 "CA";
+L_0000000000b5ac80 .functor AND 1, L_0000000000bb8390, v0000000000b5c280_0, C4<1>, C4<1>;
+v0000000000b5b6a0_0 .net "CA", 0 0, L_0000000000b5ac80;  1 drivers
+v0000000000b5b880_0 .net "CK", 0 0, v0000000000bb7850_0;  alias, 1 drivers
+v0000000000b5b920_0 .net "EN", 0 0, L_0000000000bb8390;  1 drivers
+v0000000000b5c280_0 .var "Q", 0 0;
+v0000000000b5b9c0_0 .net "RES", 0 0, v0000000000bb8570_0;  alias, 1 drivers
+S_0000000000b67160 .scope module, "cu2" "cnt_unit" 3 9, 4 2 0, S_0000000000b5b210;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "CK";
+    .port_info 1 /INPUT 1 "RES";
+    .port_info 2 /INPUT 1 "EN";
+    .port_info 3 /OUTPUT 1 "Q";
+    .port_info 4 /OUTPUT 1 "CA";
+L_0000000000b5b150 .functor AND 1, L_0000000000bb8070, v0000000000b5bd80_0, C4<1>, C4<1>;
+v0000000000b5bf60_0 .net "CA", 0 0, L_0000000000b5b150;  1 drivers
+v0000000000b5ba60_0 .net "CK", 0 0, v0000000000bb7850_0;  alias, 1 drivers
+v0000000000b5c000_0 .net "EN", 0 0, L_0000000000bb8070;  1 drivers
+v0000000000b5bd80_0 .var "Q", 0 0;
+v0000000000b5c3c0_0 .net "RES", 0 0, v0000000000bb8570_0;  alias, 1 drivers
+S_0000000000b672f0 .scope module, "cu3" "cnt_unit" 3 10, 4 2 0, S_0000000000b5b210;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "CK";
+    .port_info 1 /INPUT 1 "RES";
+    .port_info 2 /INPUT 1 "EN";
+    .port_info 3 /OUTPUT 1 "Q";
+    .port_info 4 /OUTPUT 1 "CA";
+L_0000000000b5aac0 .functor AND 1, L_0000000000bb7170, v0000000000b5c0a0_0, C4<1>, C4<1>;
+v0000000000b5bb00_0 .net "CA", 0 0, L_0000000000b5aac0;  1 drivers
+v0000000000b5c320_0 .net "CK", 0 0, v0000000000bb7850_0;  alias, 1 drivers
+v0000000000b5bba0_0 .net "EN", 0 0, L_0000000000bb7170;  1 drivers
+v0000000000b5c0a0_0 .var "Q", 0 0;
+v0000000000b5be20_0 .net "RES", 0 0, v0000000000bb8570_0;  alias, 1 drivers
+    .scope S_0000000000b5f730;
+T_0 ;
+    %wait E_0000000000b58260;
+    %load/vec4 v0000000000b5bce0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_0.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000b5b600_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0000000000b5b7e0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_0.2, 4;
+    %load/vec4 v0000000000b5b600_0;
+    %inv;
+    %assign/vec4 v0000000000b5b600_0, 0;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0000000000b66fd0;
+T_1 ;
+    %wait E_0000000000b58260;
+    %load/vec4 v0000000000b5b9c0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_1.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000b5c280_0, 0;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/vec4 v0000000000b5b920_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_1.2, 4;
+    %load/vec4 v0000000000b5c280_0;
+    %inv;
+    %assign/vec4 v0000000000b5c280_0, 0;
+T_1.2 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0000000000b67160;
+T_2 ;
+    %wait E_0000000000b58260;
+    %load/vec4 v0000000000b5c3c0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_2.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000b5bd80_0, 0;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/vec4 v0000000000b5c000_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_2.2, 4;
+    %load/vec4 v0000000000b5bd80_0;
+    %inv;
+    %assign/vec4 v0000000000b5bd80_0, 0;
+T_2.2 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0000000000b672f0;
+T_3 ;
+    %wait E_0000000000b58260;
+    %load/vec4 v0000000000b5be20_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_3.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000b5c0a0_0, 0;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/vec4 v0000000000b5bba0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_3.2, 4;
+    %load/vec4 v0000000000b5c0a0_0;
+    %inv;
+    %assign/vec4 v0000000000b5c0a0_0, 0;
+T_3.2 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0000000000b59ca0;
+T_4 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000bb7850_0, 0, 1;
+    %delay 50000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000bb7850_0, 0, 1;
+    %delay 50000, 0;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0000000000b59ca0;
+T_5 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000bb8570_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000bb8570_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000bb8570_0, 0, 1;
+    %delay 2000000, 0;
+    %vpi_call 2 18 "$finish" {0 0 0};
+    %end;
+    .thread T_5;
+    .scope S_0000000000b59ca0;
+T_6 ;
+    %vpi_call 2 20 "$monitor", $stime, " ck=%b res=%b q=%h", v0000000000bb7850_0, v0000000000bb8570_0, v0000000000bb68b0_0 {0 0 0};
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "counter_unit_tp.v";
+    "counter_unit.v";
+    "cnt_unit.v";
