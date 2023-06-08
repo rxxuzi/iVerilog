@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>H1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%89%8D%E6%9C%9F%E4%B8%AD%E9%96%93">前期中間</h1>
+<h2 id="1-hdl%E3%81%AE%E7%A8%AE%E9%A1%9E">1　HDLの種類</h2>
+<ul>
+<li>SFL
+<ul>
+<li>論理合成ツール<code>PARTHENON</code>用HDL</li>
+</ul>
+</li>
+<li>UDL/I
+<ul>
+<li>日本電子工業振興協会が標準化した純国産の標準HDL</li>
+</ul>
+</li>
+<li>VHDL
+<ul>
+<li>1980 年代に米国国防総省の主導によって開発されたハードウェア記述言語</li>
+</ul>
+</li>
+<li>SystemC
+<ul>
+<li>システム設計を行う為の言語。C++のクラスライブラリとして提供</li>
+</ul>
+</li>
+<li>Verilog HDL
+<ul>
+<li>C言語の文法に似た電子回路シミュレータ<code>ASIC開発</code>に用いられる</li>
+</ul>
+</li>
+</ul>
+<p><img src="pic/H1/p14.png" alt="image"></p>
+<h2 id="2-verilog-%E3%81%A7%E6%9B%B8%E3%81%8B%E3%82%8C%E3%81%9F%E3%83%AA%E3%82%B9%E3%83%88%E3%81%A8%E5%9B%9E%E8%B7%AF%E5%9B%B3%E3%81%AE%E5%AF%BE%E5%BF%9C">2 Verilog で書かれたリストと回路図の対応</h2>
+<p>論理演算子</p>
+<h3 id="%E3%83%93%E3%83%83%E3%83%88%E6%BC%94%E7%AE%97%E5%AD%90">ビット演算子</h3>
+<table>
+<thead>
+<tr>
+<th>演算子</th>
+<th>記述例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>~x</td>
+<td>xのビットを反転(NOT)</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>x &amp; y</td>
+<td>xとyのビットAND</td>
+</tr>
+<tr>
+<td>|</td>
+<td>x | y</td>
+<td>xとyのビットOR</td>
+</tr>
+<tr>
+<td>^</td>
+<td>x ^ y</td>
+<td>xとyのビットXOR</td>
+</tr>
+</tbody>
+</table>
+<p><img src="pic/H1/logic circuit.png" alt="image"></p>
+<p>例題1</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">module</span> gexor(a,b,c);
+<span class="hljs-keyword">input</span> a,b;<span class="hljs-comment">//入力:A,B</span>
+<span class="hljs-keyword">output</span> c; <span class="hljs-comment">//出力:C</span>
+<span class="hljs-keyword">assign</span> c = a ^ b; <span class="hljs-comment">//c は aとbのXOR</span>
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+<p><img src="pic/H1/2-Ans.png" alt="image"></p>
+<p>例題2</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">module</span> test(a,b,c,d,x,y,z);
+<span class="hljs-keyword">input</span> a,b,c,d;
+<span class="hljs-keyword">output</span> x,y,z;
+
+gand gandv(a,b,x); <span class="hljs-comment">//x = aとbのand</span>
+gexor gexor(c,d,y); <span class="hljs-comment">// y = cとdのxor</span>
+
+<span class="hljs-keyword">assign</span> z = x &amp; ~y; <span class="hljs-comment">//z = xと反転yのand</span>
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+<p><img src="pic/H1/2-Ans3.png" alt="image"></p>
+<h2 id="3-%EF%BC%94%E3%83%93%E3%83%83%E3%83%88%E5%8A%A0%E7%AE%97%E5%9B%9E%E8%B7%AF">3 ４ビット加算回路</h2>
+<p>fulladder.v</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">module</span> fulladd(A, B, CIN, S, COUT);
+<span class="hljs-keyword">input</span> A,B,CIN;
+<span class="hljs-keyword">output</span> S,COUT;
+
+<span class="hljs-keyword">assign</span> S = A ^ B ^ CIN;
+<span class="hljs-keyword">assign</span> COUT  (A&amp;B) | (B&amp;CIN) | (CIN &amp; bA);
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+<p><img src="pic/H1/Logic.png" alt="image"></p>
+<p>フルアダーを呼び出す方法</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// full adder</span>
+<span class="hljs-keyword">module</span> adder_ripple( a, b, q );
+<span class="hljs-keyword">input</span>    [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]   a, b;
+<span class="hljs-keyword">output</span>  [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]   q;
+<span class="hljs-keyword">wire</span>  [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]   cout;
+fulladd add0( a[<span class="hljs-number">0</span>], b[<span class="hljs-number">0</span>],   <span class="hljs-number">1'b0</span>,  q[<span class="hljs-number">0</span>], cout[<span class="hljs-number">0</span>] ); <span class="hljs-comment">//1'b0は0bit(GND)</span>
+fulladd add1( a[<span class="hljs-number">1</span>], b[<span class="hljs-number">1</span>], cout[<span class="hljs-number">0</span>], q[<span class="hljs-number">1</span>], cout[<span class="hljs-number">1</span>] );
+fulladd add2( a[<span class="hljs-number">2</span>], b[<span class="hljs-number">2</span>], cout[<span class="hljs-number">1</span>], q[<span class="hljs-number">2</span>], cout[<span class="hljs-number">2</span>] );
+fulladd add3( a[<span class="hljs-number">3</span>], b[<span class="hljs-number">3</span>], cout[<span class="hljs-number">2</span>], q[<span class="hljs-number">3</span>], cout[<span class="hljs-number">3</span>] );
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+<p><img src="pic/H1/adder_ripple.png" alt="image"></p>
+<h2 id="4-%E7%95%A5%E7%A7%B0">4 略称</h2>
+<table>
+<thead>
+<tr>
+<th>略称</th>
+<th>正式名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HDL</td>
+<td>Hardware Deseription Language</td>
+</tr>
+<tr>
+<td>RTL</td>
+<td>Resistor Trasfer Level</td>
+</tr>
+<tr>
+<td>ASIC</td>
+<td>Application Specific Integrated Circuit</td>
+</tr>
+<tr>
+<td>FPGA</td>
+<td>Field Programmable Gate Array</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>Intellectual Property</td>
+</tr>
+</tbody>
+</table>
+<p>参考：(Wikiのリンク)
+<a href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E8%A8%98%E8%BF%B0%E8%A8%80%E8%AA%9E">HDL</a>
+<a href="https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E8%BB%A2%E9%80%81%E3%83%AC%E3%83%99%E3%83%AB">RTL</a>
+<a href="https://ja.wikipedia.org/wiki/ASIC">ASIC</a>
+<a href="https://ja.wikipedia.org/wiki/FPGA">FPGA</a>
+<a href="https://e-words.jp/w/%E7%9F%A5%E7%9A%84%E8%B2%A1%E7%94%A3.html">IP</a></p>
+<h2 id="5-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E5%8F%82%E7%85%A7">5 モジュールの参照</h2>
+<p>名前によるポート接続は次のようにする</p>
+<pre class="hljs"><code><div>．定義側ポート名（接続信号）
+</div></code></pre>
+<p>接続:</p>
+<pre class="hljs"><code><div>fulladd add0( a[<span class="hljs-number">0</span>], b[<span class="hljs-number">0</span>], <span class="hljs-number">1</span>’b0, q[<span class="hljs-number">0</span>], cout[<span class="hljs-number">0</span>] ); 
+</div></code></pre>
+<p>ポート接続:</p>
+<pre class="hljs"><code><div>fulladd add0( <span class="hljs-variable">.Q</span>(q[<span class="hljs-number">0</span>]), <span class="hljs-variable">.COUT</span>(cout[<span class="hljs-number">0</span>]), <span class="hljs-variable">.A</span>(a[<span class="hljs-number">0</span>]) , <span class="hljs-variable">.B</span>(b[<span class="hljs-number">0</span>]), <span class="hljs-variable">.CIN</span>( <span class="hljs-number">1</span>’b0) ); 
+</div></code></pre>
+<h2 id="6-%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%81%AE-verilog%E8%A8%98%E8%BF%B0">6 バイナリカウンタの Verilog記述</h2>
+<p>テスト回路の記述中の空欄を埋める問題</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">module</span> counter( ck, res, q );
+<span class="hljs-keyword">input</span>     ck, res;  <span class="hljs-comment">//入力信号</span>
+<span class="hljs-keyword">output</span>   [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]  q; <span class="hljs-comment">//出力信号</span>
+<span class="hljs-keyword">reg</span>      [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] q; <span class="hljs-comment">//regはレジスタ型の宣言．値を保持できる記憶素子</span>
+<span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> ck <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> res ) <span class="hljs-keyword">begin</span>
+<span class="hljs-comment">/*
+順序回路はalways文で記述する．
+続く＠()内はbegin以下の処理を行う条件で，
+posedgeは信号の立ち上がりの意味．
+cｋまたはresの立ち上がりで状態が遷移する．
+*/</span>
+    <span class="hljs-keyword">if</span> ( res== <span class="hljs-number">1</span>’b1 )
+        q &lt;= <span class="hljs-number">4</span>’h0; <span class="hljs-comment">//qに4bitの0を代入</span>
+    <span class="hljs-keyword">else</span> 
+        q &lt;= q + <span class="hljs-number">4</span>’h1;<span class="hljs-comment">//インクリメント</span>
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+<h2 id="7-%E9%9B%BB%E5%AD%90%E3%81%95%E3%81%84%E3%81%93%E3%82%8D">7　電子さいころ</h2>
+<p><img src="pic/H1/dice.png" alt="image"> <img src="pic/H1/dice2.png" alt="image"></p>
+<p>記述:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">module</span>
+saikoro(ck,reset,enable,lamp);
+<span class="hljs-keyword">input</span>  ck,reset,enable;
+<span class="hljs-keyword">output</span> [<span class="hljs-number">6</span>:<span class="hljs-number">0</span>] lamp;
+<span class="hljs-keyword">reg</span>    [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] cnt;
+<span class="hljs-keyword">always</span>@(<span class="hljs-keyword">posedge</span> ck <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> reset)
+<span class="hljs-keyword">if</span> ( reset==<span class="hljs-number">1'b1</span> )
+    cnt &lt;= <span class="hljs-number">3'h1</span>; <span class="hljs-comment">//リセット時にcntは１にする</span>
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (enable==<span class="hljs-number">1'b1</span> )
+    <span class="hljs-keyword">if</span> ( cnt==<span class="hljs-number">3'h6</span> )
+      cnt &lt;= <span class="hljs-number">3'h1</span>; <span class="hljs-comment">//リセット</span>
+    <span class="hljs-keyword">else</span> 
+      cnt &lt;= cnt + <span class="hljs-number">3'h1</span>;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">function</span> [<span class="hljs-number">6</span>:<span class="hljs-number">0</span>] dec; <span class="hljs-comment">//decという名前の関数</span>
+<span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] din;
+  <span class="hljs-keyword">case</span> ( din ) <span class="hljs-comment">//1~6までの入力に対する出力を返す</span>
+    <span class="hljs-number">3'h1</span>:    dec= <span class="hljs-number">7'b0001000</span>;
+    <span class="hljs-number">3'h2</span>:    dec= <span class="hljs-number">7'b1000001</span>;
+    <span class="hljs-number">3'h3</span>:    dec= <span class="hljs-number">7'b0011100</span>;
+    <span class="hljs-number">3'h4</span>:    dec= <span class="hljs-number">7'b1010101</span>;
+    <span class="hljs-number">3'h5</span>:    dec= <span class="hljs-number">7'b1011101</span>;
+    <span class="hljs-number">3'h6</span>:    dec= <span class="hljs-number">7'b1110111</span>;
+    <span class="hljs-keyword">default</span>: dec= <span class="hljs-number">7'bxxxxxxx</span>;
+  <span class="hljs-keyword">endcase</span>
+<span class="hljs-keyword">endfunction</span>
+
+<span class="hljs-keyword">assign</span> lamp = dec ( cnt );
+
+<span class="hljs-keyword">endmodule</span>
+</div></code></pre>
+
+</body>
+</html>
