@@ -1,4 +1,4 @@
-/* “dqù@*/
+/* ï¿½dï¿½qï¿½ï¿½ï¿½@*/
 
 module keyenable( ck, reset, tenkey);
 input ck, reset;
@@ -7,7 +7,7 @@ input [9:0] tenkey;
 reg ke1, ke2;
 wire key_enbl;
 
-// ƒeƒ“EƒL[“ü—Íƒ`ƒƒƒbƒ^æ‚è—p
+// ï¿½eï¿½ï¿½ï¿½Eï¿½Lï¿½[ï¿½ï¿½ï¿½Íƒ`ï¿½ï¿½ï¿½bï¿½^ï¿½ï¿½ï¿½p
 always @( posedge ck or posedge reset ) begin
    if ( reset==1'b1 ) begin
       ke2 <= 1'b0;
@@ -22,4 +22,3 @@ end
 assign key_enbl = ~ke2 & ke1;
 
 endmodule
- 
