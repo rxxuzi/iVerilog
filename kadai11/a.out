@@ -1,0 +1,62 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000133e49f9f70 .scope module, "tri_out_tp" "tri_out_tp" 2 3;
+ .timescale -12 -12;
+P_00000133e4a5f1f0 .param/l "STEP" 0 2 7, +C4<00000000000000011000011010100000>;
+v00000133e4a5b770_0 .net "DOUT", 7 0, L_00000133e4a5b950;  1 drivers
+v00000133e4a5b810_0 .var "bus", 7 0;
+v00000133e4a5b8b0_0 .var "enable", 0 0;
+S_00000133e49fa100 .scope module, "tri_out" "tri_out" 2 9, 3 1 0, S_00000133e49f9f70;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "enable";
+    .port_info 1 /INPUT 8 "bus";
+    .port_info 2 /OUTPUT 8 "DOUT";
+v00000133e4a61ef0_0 .net "DOUT", 7 0, L_00000133e4a5b950;  alias, 1 drivers
+o00000133e4a61fc8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+; Elide local net with no drivers, v00000133e4a5c040_0 name=_ivl_0
+v00000133e49f8590_0 .net "bus", 7 0, v00000133e4a5b810_0;  1 drivers
+v00000133e4a5b6d0_0 .net "enable", 0 0, v00000133e4a5b8b0_0;  1 drivers
+L_00000133e4a5b950 .functor MUXZ 8, o00000133e4a61fc8, v00000133e4a5b810_0, v00000133e4a5b8b0_0, C4<>;
+    .scope S_00000133e49f9f70;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000133e4a5b8b0_0, 0, 1;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v00000133e4a5b810_0, 0, 8;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000133e4a5b8b0_0, 0, 1;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v00000133e4a5b810_0, 0, 8;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000133e4a5b8b0_0, 0, 1;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v00000133e4a5b810_0, 0, 8;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000133e4a5b8b0_0, 0, 1;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v00000133e4a5b810_0, 0, 8;
+    %delay 100000, 0;
+    %vpi_call 2 16 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_00000133e49f9f70;
+T_1 ;
+    %vpi_call 2 18 "$monitor", $stime, " enable=%b bus=%h DOUT=%h ", v00000133e4a5b8b0_0, v00000133e4a5b810_0, v00000133e4a5b770_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tri_out_tp.v";
+    "tri_out.v";

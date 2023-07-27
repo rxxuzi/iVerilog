@@ -4,7 +4,9 @@ input cin;
 output [3:0] q;
 output cout;
 
-assign {cout,q}=a+b+cin;
+assign {cout,q}=a+b+cin; //加算回路
+
+
 
 endmodule
 
