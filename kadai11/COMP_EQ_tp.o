@@ -1,0 +1,65 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00000000001bede0 .scope module, "COMP_EQ_tp" "COMP_EQ_tp" 2 3;
+ .timescale -12 -12;
+P_00000000001bc830 .param/l "STEP" 0 2 6, +C4<00000000000000011000011010100000>;
+v00000000001bb870_0 .var "a", 0 0;
+v0000000000874290_0 .net "a_eq_b", 0 0, L_0000000000875270;  1 drivers
+v0000000000874330_0 .var "b", 0 0;
+S_00000000001b9a80 .scope module, "COMP_EQ" "COMP_EQ" 2 8, 3 1 0, S_00000000001bede0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "a_eq_b";
+L_0000000000875270 .functor XNOR 1, v00000000001bb870_0, v0000000000874330_0, C4<0>, C4<0>;
+v00000000001b9c10_0 .net "a", 0 0, v00000000001bb870_0;  1 drivers
+v00000000001bdf90_0 .net "a_eq_b", 0 0, L_0000000000875270;  alias, 1 drivers
+v00000000001bb7d0_0 .net "b", 0 0, v0000000000874330_0;  1 drivers
+    .scope S_00000000001bede0;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000001bb870_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000874330_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000001bb870_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000874330_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000001bb870_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000874330_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000001bb870_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000874330_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000001bb870_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000874330_0, 0, 1;
+    %delay 100000, 0;
+    %vpi_call 2 16 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_00000000001bede0;
+T_1 ;
+    %vpi_call 2 18 "$monitor", $stime, " a=%h b=%h a_eq_b=%h", v00000000001bb870_0, v0000000000874330_0, v0000000000874290_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "COMP_EQ_tp.v";
+    "COMP_EQ.v";

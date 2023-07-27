@@ -1,0 +1,96 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000a15780 .scope module, "sub_use_add_tp" "sub_use_add_tp" 2 3;
+ .timescale -12 -12;
+P_0000000000ba9580 .param/l "STEP" 0 2 6, +C4<00000000000000011000011010100000>;
+v0000000000a6d200_0 .var "a", 3 0;
+v0000000000a6cee0_0 .var "b", 3 0;
+v0000000000a6ce40_0 .net "q", 3 0, L_0000000000a6d480;  1 drivers
+S_0000000000bac970 .scope module, "sub_use_add" "sub_use_add" 2 8, 3 1 0, S_0000000000a15780;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /OUTPUT 4 "q";
+L_0000000000bab530 .functor NOT 4, v0000000000a6cee0_0, C4<0000>, C4<0000>, C4<0000>;
+v0000000000a6cc60_0 .net "a", 3 0, v0000000000a6d200_0;  1 drivers
+v0000000000a6d520_0 .net "b", 3 0, v0000000000a6cee0_0;  1 drivers
+v0000000000a6d3e0_0 .net "dummy", 0 0, L_0000000000a6d700;  1 drivers
+v0000000000a6cda0_0 .net "q", 3 0, L_0000000000a6d480;  alias, 1 drivers
+S_0000000000bacb00 .scope module, "sub" "addca" 3 6, 4 1 0, S_0000000000bac970;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 4 "q";
+    .port_info 4 /OUTPUT 1 "cout";
+L_0000000000a6d8b0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000000000bacc90_0 .net *"_s10", 0 0, L_0000000000a6d8b0;  1 drivers
+v0000000000a23c20_0 .net *"_s11", 4 0, L_0000000000a6d160;  1 drivers
+L_0000000000a6d940 .functor BUFT 1, C4<00001>, C4<0>, C4<0>, C4<0>;
+v0000000000a23cc0_0 .net *"_s13", 4 0, L_0000000000a6d940;  1 drivers
+v0000000000a23d60_0 .net *"_s17", 4 0, L_0000000000a6ca80;  1 drivers
+v0000000000ba6880_0 .net *"_s3", 4 0, L_0000000000a6d340;  1 drivers
+L_0000000000a6d868 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000000000ba6920_0 .net *"_s6", 0 0, L_0000000000a6d868;  1 drivers
+v0000000000ba69c0_0 .net *"_s7", 4 0, L_0000000000a6d020;  1 drivers
+v0000000000ba6a60_0 .net "a", 3 0, v0000000000a6d200_0;  alias, 1 drivers
+v0000000000a6c940_0 .net "b", 3 0, L_0000000000bab530;  1 drivers
+L_0000000000a6d8f8 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0000000000a6cbc0_0 .net "cin", 0 0, L_0000000000a6d8f8;  1 drivers
+v0000000000a6d0c0_0 .net "cout", 0 0, L_0000000000a6d700;  alias, 1 drivers
+v0000000000a6cd00_0 .net "q", 3 0, L_0000000000a6d480;  alias, 1 drivers
+L_0000000000a6d700 .part L_0000000000a6ca80, 4, 1;
+L_0000000000a6d480 .part L_0000000000a6ca80, 0, 4;
+L_0000000000a6d340 .concat [ 4 1 0 0], v0000000000a6d200_0, L_0000000000a6d868;
+L_0000000000a6d020 .concat [ 4 1 0 0], L_0000000000bab530, L_0000000000a6d8b0;
+L_0000000000a6d160 .arith/sum 5, L_0000000000a6d340, L_0000000000a6d020;
+L_0000000000a6ca80 .arith/sum 5, L_0000000000a6d160, L_0000000000a6d940;
+    .scope S_0000000000a15780;
+T_0 ;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000000000a6d200_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000000000a6cee0_0, 0, 4;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000000000a6d200_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000000000a6cee0_0, 0, 4;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000000000a6d200_0, 0, 4;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000000000a6cee0_0, 0, 4;
+    %delay 100000, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0000000000a6d200_0, 0, 4;
+    %pushi/vec4 14, 0, 4;
+    %store/vec4 v0000000000a6cee0_0, 0, 4;
+    %delay 100000, 0;
+    %pushi/vec4 14, 0, 4;
+    %store/vec4 v0000000000a6d200_0, 0, 4;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0000000000a6cee0_0, 0, 4;
+    %delay 100000, 0;
+    %vpi_call 2 16 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0000000000a15780;
+T_1 ;
+    %vpi_call 2 18 "$monitor", $stime, " a=%h b=%h q=%h", v0000000000a6d200_0, v0000000000a6cee0_0, v0000000000a6ce40_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "sub_use_add_tp.v";
+    "sub_use_add.v";
+    "addca.v";

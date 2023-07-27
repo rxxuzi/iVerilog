@@ -1,0 +1,36 @@
+c:\iverilogwork>iverilog -o sub_use_add_tp.o addca.v sub_use_add.v sub_use_add_tp.v
+
+c:\iverilogwork>vvp sub_use_add_tp.o
+         0 a=0 b=0 q=0
+    100000 a=1 b=0 q=1
+    200000 a=0 b=1 q=f
+    300000 a=f b=e q=1
+    400000 a=e b=f q=f
+
+
+c:\iverilogwork>iverilog -o COMP_EQ_tp.o COMP_EQ.v COMP_EQ_tp.v
+
+c:\iverilogwork>vvp COMP_EQ_tp.o
+         0 a=0 b=0 a_eq_b=1
+    100000 a=0 b=1 a_eq_b=0
+    200000 a=1 b=0 a_eq_b=0
+    300000 a=1 b=1 a_eq_b=1
+    400000 a=0 b=0 a_eq_b=1
+
+
+c:\iverilogwork>iverilog -o rom_tp.o rom.v rom_tp.v
+
+c:\iverilogwork>vvp rom_tp.o
+         0 addr= 0 data=  0
+    100000 addr= 1 data=  1
+    200000 addr= 8 data= 64
+    300000 addr=15 data=225
+    400000 addr= x data=  x
+
+c:\iverilogwork>iverilog -o tri_out_tp.o tri_out.v tri_out_tp.v
+
+c:\iverilogwork>vvp tri_out_tp.o
+         0 enable=0 bus=00 DOUT=zz
+    100000 enable=0 bus=ff DOUT=zz
+    200000 enable=1 bus=00 DOUT=00
+    300000 enable=1 bus=ff DOUT=ff

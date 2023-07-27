@@ -1,25 +1,37 @@
-/* ï¿½dï¿½qï¿½ï¿½ï¿½@*/
+/* “dqù@
+ˆÃØ”Ô†‚ğ“o˜^‚Å‚«‚é‚æ‚¤‚É‚·‚éD
+‰Šú‰»‚Ísecret_key‚à4fb1111‚Å‰Šú‰»
+ˆÃØ”Ô†“ü—Í‚ª‚SŒ…–¢–‚Ì‚Éclose‚ğ‰Ÿ‚³‚ê‚Ä‚àlock‚Å‚«‚È‚¢D
+ƒNƒ[ƒY‚Å‚«‚éğŒ‚ğ¦‚·M†close_enbl‚ğì¬‚µ‚ÄCˆÃØ”Ô†“o˜^‚ÆƒƒbƒN‚Ì‚Q‚©Š‚Åg—p‚·‚é
+*/
 
-module elelock( ck, reset, tenkey, close, lock);
+module elelock3( ck, reset, tenkey, close, lock);
 input ck, reset, close;
 input [9:0] tenkey;
 output lock;
 reg lock, ke1, ke2;
 reg [3:0] key[0:3];
-wire match, key_enbl;
+reg [3:0] secret_key[0:3];
 
-// ï¿½ÃØ”Ôï¿½ï¿½İ’ï¿½
-parameter SECRET_3 = 4'h1, SECRET_2 = 4'h7, SECRET_1 = 4'h9, SECRET_0 = 4'h9;
+wire match, key_enbl, lock_enbl;
 
-// ï¿½ÃØ”Ôï¿½ï¿½ï¿½ï¿½Íƒï¿½ï¿½Wï¿½Xï¿½^
+// ˆÃØ”Ô†“ü—ÍE‹L‰¯ƒŒƒWƒXƒ^
 always @( posedge ck or posedge reset ) begin
    if ( reset==1'b1 ) begin
+      secret_key[3] <= 4'b1111;	
+      secret_key[2] <= 4'b1111;
+      secret_key[1] <= 4'b1111;
+      secret_key[0] <= 4'b1111;
       key[3] <= 4'b1111;
       key[2] <= 4'b1111;
       key[1] <= 4'b1111;
       key[0] <= 4'b1111;
    end
-   else if ( close==1'b1 ) begin
+   else if ( close==1'b1 && lock_enbl==1'b1) begin 
+      secret_key[3] <= key[3];	// ˆÃØ”Ô†“o˜^C4Œ…–¢–‚Ì“ü—Í‚Ælock‚³‚ê‚Ä‚¢‚é‚Í“o˜^‚³‚ê‚È‚¢
+      secret_key[2] <= key[2];
+      secret_key[1] <= key[1];
+      secret_key[0] <= key[0];
       key[3] <= 4'b1111;
       key[2] <= 4'b1111;
       key[1] <= 4'b1111;
@@ -33,7 +45,7 @@ always @( posedge ck or posedge reset ) begin
    end
 end
 
-// ï¿½eï¿½ï¿½ï¿½Eï¿½Lï¿½[ï¿½ï¿½ï¿½Íƒ`ï¿½ï¿½ï¿½bï¿½^ï¿½ï¿½ï¿½p
+// ƒeƒ“EƒL[“ü—Íƒ`ƒƒƒbƒ^æ‚è—p
 always @( posedge ck or posedge reset ) begin
    if ( reset==1'b1 ) begin
       ke2 <= 1'b0;
@@ -45,17 +57,18 @@ always @( posedge ck or posedge reset ) begin
    end
 end  
 
-// ï¿½dï¿½qï¿½ï¿½ï¿½oï¿½ï¿½
+// “dqùo—Í
 always @( posedge ck or posedge reset ) begin
-   if ( reset==1'b1 )
+   if ( reset==1'b1 ) 
       lock <= 1'b0;
-   else if ( close==1'b1 ) 
+   else if ( close==1'b1 && lock_enbl==1'b1) begin
       lock <= 1'b1;
+   end
    else if ( match==1'b1 )
       lock <= 1'b0;
 end
 
-// ï¿½eï¿½ï¿½ï¿½Eï¿½Lï¿½[ï¿½ï¿½ï¿½ÍƒGï¿½ï¿½ï¿½Rï¿½[ï¿½_
+// ƒeƒ“EƒL[“ü—ÍƒGƒ“ƒR[ƒ_
 function [3:0] keyenc;
 input [9:0] sw;
    case ( sw )
@@ -72,10 +85,11 @@ input [9:0] sw;
    endcase
 endfunction
 
-// ï¿½ÃØ”Ôï¿½ï¿½ï¿½vï¿½Mï¿½ï¿½
-assign match = (key[0]==SECRET_0) && (key[1]==SECRET_1)
-            && (key[2]==SECRET_2) && (key[3]==SECRET_3);
+// ˆÃØ”Ô†ˆê’vM†
+assign match = (key[0]==secret_key[0]) && (key[1]==secret_key[1]) && (key[2]==secret_key[2]) && (key[3]==secret_key[3]);
+
 assign key_enbl = ~ke2 & ke1;
+assign lock_enbl= (lock==1'b0) && (key[3]!=4'b1111) && (key[2]!=4'b1111) && (key[1]!=4'b1111) && (key[0]!=4'b1111);
 
 endmodule
 
