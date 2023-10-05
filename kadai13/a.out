@@ -1,0 +1,81 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002923edea390 .scope module, "gray_cnt_easy_tp" "gray_cnt_easy_tp" 2 2;
+ .timescale -12 -12;
+P_000002923ee3ce40 .param/l "STEP" 0 2 5, +C4<00000000000000011000011010100000>;
+v000002923ee3a0a0_0 .var "ck", 0 0;
+v000002923ee3a140_0 .net "q", 2 0, L_000002923ee35e90;  1 drivers
+v000002923ee35df0_0 .var "res", 0 0;
+S_000002923ee39d30 .scope module, "uut" "gray_cnt_easy" 2 6, 3 2 0, S_000002923edea390;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "ck";
+    .port_info 1 /INPUT 1 "res";
+    .port_info 2 /OUTPUT 3 "q";
+v000002923ee39ec0_0 .net "ck", 0 0, v000002923ee3a0a0_0;  1 drivers
+v000002923ee37370_0 .net "q", 2 0, L_000002923ee35e90;  alias, 1 drivers
+v000002923ee39f60_0 .var "r", 3 0;
+v000002923ee3a000_0 .net "res", 0 0, v000002923ee35df0_0;  1 drivers
+E_000002923ee3d1c0 .event posedge, v000002923ee3a000_0, v000002923ee39ec0_0;
+L_000002923ee35e90 .part v000002923ee39f60_0, 0, 3;
+    .scope S_000002923ee39d30;
+T_0 ;
+    %wait E_000002923ee3d1c0;
+    %load/vec4 v000002923ee3a000_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v000002923ee39f60_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000002923ee39f60_0;
+    %parti/s 1, 3, 3;
+    %inv;
+    %load/vec4 v000002923ee39f60_0;
+    %parti/s 3, 1, 2;
+    %concat/vec4; draw_concat_vec4
+    %assign/vec4 v000002923ee39f60_0, 0;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_000002923edea390;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002923ee3a0a0_0, 0, 1;
+    %delay 50000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002923ee3a0a0_0, 0, 1;
+    %delay 50000, 0;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_000002923edea390;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002923ee35df0_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002923ee35df0_0, 0, 1;
+    %delay 100000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002923ee35df0_0, 0, 1;
+    %delay 2000000, 0;
+    %vpi_call 2 17 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_000002923edea390;
+T_3 ;
+    %vpi_call 2 19 "$monitor", $stime, " res=%b q=%b", v000002923ee35df0_0, v000002923ee3a140_0 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "gray_cnt_easy_tp.v";
+    "gray_cnt_easy.v";
