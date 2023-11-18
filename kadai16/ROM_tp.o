@@ -1,0 +1,109 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00000000009bb340 .scope module, "ROM_tp" "ROM_tp" 2 3;
+ .timescale 0 0;
+P_00000000009b87d0 .param/l "STEP" 0 2 9, +C4<00000000000000000010011100010000>;
+v0000000000a02300_0 .var "addr", 14 0;
+v0000000000a029e0_0 .net "data", 7 0, L_0000000000a02940;  1 drivers
+v0000000000a021c0_0 .var "oeb", 0 0;
+S_00000000009f3e20 .scope module, "ROM" "ROM" 2 11, 3 3 0, S_00000000009bb340;
+ .timescale 0 0;
+    .port_info 0 /INPUT 15 "addr";
+    .port_info 1 /INOUT 8 "data";
+    .port_info 2 /INPUT 1 "oeb";
+P_00000000009b9350 .param/l "RDELAY" 0 3 10, +C4<00000000000000000000010111011100>;
+v00000000009f6060_0 .net *"_s0", 31 0, L_0000000000a02260;  1 drivers
+v00000000009f6100_0 .net *"_s10", 16 0, L_0000000000a02120;  1 drivers
+L_0000000000a4e0c8 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v00000000009f61a0_0 .net *"_s13", 1 0, L_0000000000a4e0c8;  1 drivers
+o0000000000a09038 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+; Elide local net with no drivers, v00000000009f6240_0 name=_s14
+L_0000000000a4e038 .functor BUFT 1, C4<0000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v00000000009b6870_0 .net *"_s3", 30 0, L_0000000000a4e038;  1 drivers
+L_0000000000a4e080 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v00000000009b6910_0 .net/2u *"_s4", 31 0, L_0000000000a4e080;  1 drivers
+v00000000009b69b0_0 .net *"_s6", 0 0, L_0000000000a023a0;  1 drivers
+v00000000009b6a50_0 .net *"_s8", 7 0, L_0000000000a02440;  1 drivers
+v0000000000a02580_0 .net "addr", 14 0, v0000000000a02300_0;  1 drivers
+v0000000000a028a0_0 .net "data", 7 0, L_0000000000a02940;  alias, 1 drivers
+v0000000000a02bc0 .array "mem", 32767 0, 7 0;
+v0000000000a01fe0_0 .net "oeb", 0 0, v0000000000a021c0_0;  1 drivers
+L_0000000000a02260 .concat [ 1 31 0 0], v0000000000a021c0_0, L_0000000000a4e038;
+L_0000000000a023a0 .cmp/eq 32, L_0000000000a02260, L_0000000000a4e080;
+L_0000000000a02440 .array/port v0000000000a02bc0, L_0000000000a02120;
+L_0000000000a02120 .concat [ 15 2 0 0], v0000000000a02300_0, L_0000000000a4e0c8;
+L_0000000000a02940 .delay 8 (1500,1500,1500) L_0000000000a02940/d;
+L_0000000000a02940/d .functor MUXZ 8, o0000000000a09038, L_0000000000a02440, L_0000000000a023a0, C4<>;
+    .scope S_00000000009f3e20;
+T_0 ;
+    %vpi_call 3 14 "$readmemh", "rom_data.hex", v0000000000a02bc0 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_00000000009bb340;
+T_1 ;
+    %pushi/vec4 0, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 2, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 2, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 3, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 3, 0, 15;
+    %store/vec4 v0000000000a02300_0, 0, 15;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a021c0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 24 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_00000000009bb340;
+T_2 ;
+    %vpi_call 2 27 "$monitor", $stime, " addr=%h oeb=%b data=%h ", v0000000000a02300_0, v0000000000a021c0_0, v0000000000a029e0_0 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ROM_tp.v";
+    "ROM.v";
